@@ -1,6 +1,7 @@
 export interface PokemonsList {
     pokemons: Pokemon[],
-    asyncStatus: Boolean
+    asyncStatus: Boolean,
+    selected: number | null
 }
 
 export interface Pokemon {

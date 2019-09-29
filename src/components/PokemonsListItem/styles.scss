@@ -1,7 +1,21 @@
 $padding: 10px;
 .pokemon-list-item {
     padding: $padding;
+    transition: transform .2s;
 }
+
+.pokemon-list-item:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+.pokemon-list-item:hover .pokemon-list-image-container{
+    box-shadow:0 0 20px #80d8ff;
+}
+.pokemon-list-item:hover .pokemon-list-name-container{
+    box-shadow:0 0 20px #80d8ff;
+}
+
+
 
 .pokemon-list-image-container{
     background: whitesmoke;

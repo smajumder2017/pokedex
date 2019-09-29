@@ -7,15 +7,16 @@ import AppState from './../../../models/state';
 import {PokemonsList,Pokemon} from './../../../models/pokemonsList';
 
 import {PokemonListItem} from './../../../components/PokemonsListItem';
-
-import {fetchPokemon} from './../../../redux/actions/pokemonsListActions';
+import {Loader} from './../../../components/Loader';
+import {fetchPokemon, selectPokemon} from './../../../redux/actions/pokemonsListActions';
 
 import {safeTraverse} from './../../../utils/helpers';
 import './styles.scss';
 
 interface IPokemonsListContainerProps {
   pokemonsList: PokemonsList,
-  fetchPokemon: typeof fetchPokemon
+  fetchPokemon: typeof fetchPokemon,
+  selectPokemon: typeof selectPokemon
 }
 
 const PokemonListContainer: React.FC<IPokemonsListContainerProps> = (props) => {
@@ -25,11 +26,16 @@ const PokemonListContainer: React.FC<IPokemonsListContainerProps> = (props) => {
   const [limit] = useState(20);
 
   const fetchPokemonList = async () =>{
-    const data = await props.fetchPokemon({offset, limit});
+    await props.fetchPokemon({offset, limit});
     setOffSet(limit + offset);
-    console.log(data);
   }
 
+  useEffect(()=>{
+    setOffSet(limit + offset);
+    fetchPokemonList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  
   const handleScroll = debounce(() => {
     if (
       safeTraverse(pkmnListContainer, ['current','scrollHeight']) === safeTraverse(pkmnListContainer, ['current','scrollTop'])
@@ -39,23 +45,21 @@ const PokemonListContainer: React.FC<IPokemonsListContainerProps> = (props) => {
     }
   }, 100);
 
-  useEffect(()=>{
-    setOffSet(limit + offset);
-    fetchPokemonList();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  
+  const handlePokemonSelect = (number: number) => {
+    props.selectPokemon(number)
+  }
+
   const pokemons = safeTraverse(props,['pokemonsList', 'pokemons']) || []
   return (
     <div>
-      {safeTraverse(props,['pokemonsList', 'asyncStatus']) && <div>Loading</div>}
+      {safeTraverse(props,['pokemonsList', 'asyncStatus']) && <Loader />}
       <div className="pkmn-list-container" onScroll={handleScroll} ref={pkmnListContainer}>
       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
         <div>
           {
             pokemons.map((item: Pokemon, index: number) => {
               return (
-                <PokemonListItem key={index} pokemon={item} number={index + 1}/>
+                <PokemonListItem key={index} pokemon={item} number={index + 1} handleSelect={() => {handlePokemonSelect(index+1)}}/>
               )
             })
           }
@@ -72,4 +76,4 @@ const mapStateToProps = (state: AppState) => {
   }
 }
 
-export default connect(mapStateToProps, {fetchPokemon})(PokemonListContainer);
+export default connect(mapStateToProps, {fetchPokemon, selectPokemon})(PokemonListContainer);

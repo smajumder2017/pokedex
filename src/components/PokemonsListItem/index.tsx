@@ -8,11 +8,12 @@ import './styles.scss'
 
 interface IPokemonListItemProps {
   pokemon: Pokemon
-  number: number
+  number: number,
+  handleSelect: ()=> void
 }
 export const PokemonListItem: React.FC<IPokemonListItemProps> = (props) => {
   return (
-    <div className="pokemon-list-item">
+    <div className="pokemon-list-item" onClick={props.handleSelect}>
       <Row noGutters>
         <Col sm={2}>
           <div className="pokemon-list-image-container">

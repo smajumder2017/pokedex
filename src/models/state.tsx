@@ -1,5 +1,6 @@
 import {PokemonsList} from './pokemonsList';
-
+import {PokemonDetailsProps} from './../redux/reducers/pokemonDetailsReducer';
 export default interface AppState {
-    pokemonsList: PokemonsList
+    pokemonsList: PokemonsList,
+    pokemonDetails: PokemonDetailsProps
 }

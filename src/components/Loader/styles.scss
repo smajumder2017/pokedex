@@ -1,0 +1,31 @@
+.loader-image-container{
+    z-index: 15;
+    width: -webkit-fill-available;
+    position: absolute;
+    height: 94vh;
+    background: black;
+    opacity: 0.8;
+    animation: fade 1s linear;
+}
+
+.loader-image {
+    opacity: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    margin:-60px 0 0 -60px;
+    z-index: 20;
+    animation: fade 1s linear;
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@keyframes fade {
+    0%,100% { opacity: 0 }
+    50% { opacity: 0.8 }
+}

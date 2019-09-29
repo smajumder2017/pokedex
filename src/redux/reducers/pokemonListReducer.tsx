@@ -1,10 +1,11 @@
-import { FETCH_POKEMON_LIST, FETCH_POKEMON_LIST_SUCCESS, FETCH_POKEMON_LIST_FAILED } from './../actions/types';
+import { FETCH_POKEMON_LIST, FETCH_POKEMON_LIST_SUCCESS, FETCH_POKEMON_LIST_FAILED, SELECT_POKEMON } from './../actions/types';
 
 import {PokemonsList} from './../../models/pokemonsList';
 import {safeTraverse} from './../../utils/helpers';
 
 const initialState: PokemonsList = {
   pokemons:[],
+  selected: null,
   asyncStatus: false
 }
 
@@ -29,6 +30,12 @@ const pokemonsList = (state = initialState, action: any): PokemonsList => {
       return {
         ...state,
         asyncStatus: false
+      }
+    }
+    case SELECT_POKEMON: {
+      return{
+        ...state,
+        selected: action.number
       }
     }
     default:

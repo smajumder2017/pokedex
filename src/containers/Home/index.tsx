@@ -2,6 +2,7 @@ import React from 'react';
 import {Row, Col} from 'react-bootstrap';
 
 import PokemonListContainer from './PokemonListContainer';
+import PokemonDetailsContainer from './PokemonDetailsContainer';
 
 import './styles.scss';
 
@@ -13,7 +14,7 @@ const Home : React.FC = () => {
                     <PokemonListContainer />
                 </Col>
                 <Col sm={10}>
-                home
+                    <PokemonDetailsContainer />
                 </Col>
             </Row>
         </div>
