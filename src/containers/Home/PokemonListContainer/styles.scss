@@ -1,0 +1,8 @@
+$bgcolor: #fafafa;
+
+.pkmn-list-container{
+    background-color: $bgcolor;
+    padding: 10px;
+    overflow-y: scroll;
+    height: 94vh;
+}

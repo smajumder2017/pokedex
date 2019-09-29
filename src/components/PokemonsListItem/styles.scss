@@ -1,0 +1,33 @@
+$padding: 10px;
+.pokemon-list-item {
+    padding: $padding;
+}
+
+.pokemon-list-image-container{
+    background: whitesmoke;
+    border-radius: 50%;
+    height: 55px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid grey;
+    z-index: 10;
+    position: relative;
+}
+
+.pokemon-list-name-container{
+    background: lightgray;
+    z-index: 1;
+    margin-top: 6px;
+    padding: 12px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    font-weight: bold;
+    color: grey;
+}
+
+.pokemon-item-name{
+    margin-left: 25px;
+    font-size: 10px;
+}
