@@ -1,0 +1,123 @@
+.pokemon-image-container {
+    height: 400px;
+    display: flex;
+}
+
+.pokemon-image-container img{
+    z-index: 10;
+}
+
+$types: grass fire water bug normal poison flying electric ground fairy fighting psychic rock ghost ice dragon dark steel;
+
+@each $type in $types {
+    .cover-#{$type}{
+        position: absolute;
+        width:100%;
+        height: 400px;
+        @if($type == grass) or ($type == bug) or ($type ==fairy){
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        // @if ($type == fighting) or ($type == dragon) or ($type == ghost) or ($type == poison) or ($type == ice) or ($type == dark) or ($type == water) or ($type == electric) or ($type == ground) {
+            
+        // } @else {
+        //     background-repeat: no-repeat;
+        //     background-size: cover;
+        // }
+        background-image: url('./../../../assets//typebackgrounds/'+$type+'.svg');
+    }
+}
+
+$type-colors: (
+    grass: #4caf50,
+    poison: #7e57c2,
+    water: #2196f3,
+    fire: #e65100,
+    electric: #ffd600,
+    flying: #84bdff,
+    bug: #cddc39,
+    normal: #ffebee,
+    ground: #795548,
+    fairy: #e7779c,
+    fighting: #bf360c,
+    psychic:#d500f9,
+    rock: #90a4ae,
+    steel: #607d8b
+);
+
+@each $type, $hex in $type-colors {
+    // do stuff
+    .type-#{$type}{
+        @if($type == normal){
+            color: #010101;
+        }
+        background-color: $hex;
+        padding: 5px;
+        border-radius: 3px;
+        box-shadow: 0 0 5px #010101;
+        margin-right: 10px;
+    }
+
+}
+
+.pokeinfo{
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    z-index: 10;
+    width:100%
+}
+
+.poke-image-backdrop{
+    background-image: url('./../../../assets//pokemon-go.svg');
+    width:330px;
+    height: 330px;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+
+.poke-image-backdrop img{
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+}
+
+.poke-details-basic-container{
+    justify-content: center;
+}
+
+.poke-details-basic {
+    color: white;
+}
+
+.poke-details-basic .name{
+    font-size: 30px;
+    font-weight: 500;
+    word-spacing: 10px;
+    // text-shadow: 2px 2px #636262ec;
+}
+
+.poke-details-basic b{
+    // text-shadow: 2px 2px #636262ec;
+}
+
+.dimension{
+    margin-top: 10px;
+}
+
+.dimension .dimension-item{
+    margin-right: 10px;
+}
+
+.abilities span{
+    margin-right: 10px;
+}

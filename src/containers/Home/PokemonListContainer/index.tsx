@@ -59,7 +59,7 @@ const PokemonListContainer: React.FC<IPokemonsListContainerProps> = (props) => {
           {
             pokemons.map((item: Pokemon, index: number) => {
               return (
-                <PokemonListItem key={index} pokemon={item} number={index + 1} handleSelect={() => {handlePokemonSelect(index+1)}}/>
+                <PokemonListItem key={index} pokemon={item} number={index + 1} handleSelect={() => {handlePokemonSelect(index+1)}} selected={props.pokemonsList.selected === (index+1)}/>
               )
             })
           }

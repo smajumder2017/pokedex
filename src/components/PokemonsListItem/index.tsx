@@ -9,14 +9,15 @@ import './styles.scss'
 interface IPokemonListItemProps {
   pokemon: Pokemon
   number: number,
+  selected: Boolean,
   handleSelect: ()=> void
 }
 export const PokemonListItem: React.FC<IPokemonListItemProps> = (props) => {
   return (
-    <div className="pokemon-list-item" onClick={props.handleSelect}>
+    <div className={props.selected ? `pokemon-list-item selected` : `pokemon-list-item`} onClick={props.handleSelect}>
       <Row noGutters>
         <Col sm={2}>
-          <div className="pokemon-list-image-container">
+          <div className={props.selected ? `pokemon-list-image-container selected` : `pokemon-list-image-container`}>
             <img
               alt=""
               src={require(`./../../assets/pokemons/${props.number}.svg`)}
@@ -27,7 +28,7 @@ export const PokemonListItem: React.FC<IPokemonListItemProps> = (props) => {
           </div>
         </Col>
         <Col sm={10}>
-          <div className="pokemon-list-name-container">
+          <div className={props.selected ? `pokemon-list-name-container selected` : `pokemon-list-name-container`}>
             <div className="pokemon-item-name">
               {`# ${props.number} ${safeTraverse(props, ['pokemon', 'name']).toUpperCase()}`}
             </div>

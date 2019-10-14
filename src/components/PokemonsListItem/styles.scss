@@ -15,6 +15,18 @@ $padding: 10px;
     box-shadow:0 0 20px #80d8ff;
 }
 
+.pokemon-list-item.selected {
+    transform: scale(1.1);
+}
+.pokemon-list-item .pokemon-list-image-container.selected{
+    box-shadow:0 0 20px #80d8ff;
+}
+.pokemon-list-item .pokemon-list-name-container.selected{
+    background-color: #2196f3;
+    color: white;
+    box-shadow:0 0 20px #80d8ff;
+}
+
 
 
 .pokemon-list-image-container{
@@ -31,7 +43,7 @@ $padding: 10px;
 }
 
 .pokemon-list-name-container{
-    background: lightgray;
+    background: #eeeeee;
     z-index: 1;
     margin-top: 6px;
     padding: 12px;
